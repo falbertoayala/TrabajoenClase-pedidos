@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">
+      Pedidos
+    </h2>
+      <div class="card-text">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <td>Cliente</td>
+                <td>Plato</td>
+                <td>Total</td>
+                <td>Estado del Pedido</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor ="let orden of pedido" (click)="onClick(orden);">
+                <td>{{orden.name}}</td>
+                <td>{{orden.platillo}}</td>
+                <td>{{orden.total}}</td>
+                <td>{{orden.entregado}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
+<br>
+<div class="card" *ngIf = "pedidoseleccionado" >
+    <div class="card-body">
+      <h2 class="card-title">
+        {{pedidoseleccionado.name}}
+      </h2>
+      <div class="card-text">
+        <div class="form-group">
+          Plato:
+          <select name="plato" class="form-control">
+              <option *ngFor = "let plato of platos" [value] = "plato">{{plato}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          Total:
+          <input type="number" class="form-control" value="{{pedidoseleccionado.total}}">
+        </div>
+        <div class="form-group">
+          Estado del Pedido:
+          <input type="text" class="form-control" value="{{pedidoseleccionado.entregado}}">
+        </div>
+      </div>
+    </div>
+  </div>
